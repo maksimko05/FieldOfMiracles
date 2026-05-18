@@ -127,7 +127,7 @@ playAgainButton.addEventListener("click", () => {
 finalMessage.appendChild(playAgainButton);
 //-------------------Final message-------------------//
 
-let currentQuestion = 10;
+let currentQuestion = 0;
 
 const completeQuestion = () => {
     winFone.classList.add("activated");
@@ -274,7 +274,7 @@ const displayQuestion = () => {
         wordSection.appendChild(letterBox);
 
         if(question.question.startsWith("img-")){
-            questionSection.innerHTML = `<img src="/src/images/${question.question.split("-")[1]}" alt="question image">`;
+            questionSection.innerHTML = `<img src="src/images/${question.question.split("-")[1]}" alt="question image">`;
         }
         else{
             questionSection.innerHTML = `<p>${question.question}</p>`;

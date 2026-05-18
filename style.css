@@ -5,11 +5,11 @@ html {
 body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
-    font-size: 40px;
-    background-image: url("/src/images/background.webp");
+    font-size: 24px;
+    background-image: url("src/images/background.webp");
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100hv; 
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     color: rgb(242, 231, 231);
@@ -30,6 +30,15 @@ body {
     opacity: 0 !important;
 }
 
+.question_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-bottom: 260px;
+    position: relative;
+}
+
 .word_section {
     display: flex;
     justify-content: center;
@@ -37,20 +46,20 @@ body {
     width: 80%;
     margin: auto;
     margin-top: 25px;
-    height: 350px;
+    height: 180px;
     border: 1px solid rgb(244, 235, 235);
     border-radius: 20px;
     gap: 10px;
-    font-size: 150px;
+    font-size: 5rem;
     background-color: rgb(27, 127, 215);
     box-shadow: 2px 2px 5px grey;
 }
 
 .question_section {
-    padding: 30px;
+    padding: 20px;
     justify-content: center;
     width: 80%;
-    height: 350px;
+    height: 220px;
     position: absolute;
     left: 0;
     right: 0;
@@ -66,12 +75,12 @@ body {
 .question_section > img {
     max-width: 100%;
     max-height: 100%;
-    min-height: 100%;
+    object-fit: contain;
 }
 
 .letter_box {
-    border-bottom: 1px solid rgb(242, 231, 231);
-    width: 100px;
+    border-bottom: 3px solid rgb(242, 231, 231);
+    width: 60px;
     text-align: center;
 }
 
@@ -97,6 +106,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     transition: 0.5s opacity;
     pointer-events: none;
+    z-index: 10;
 }
 
 .win_fone.activated {
@@ -107,6 +117,7 @@ body {
     --dx: 1; 
     position: absolute;
     bottom: 0;
+    width: 350px;
 }
 
 #popper1 {
@@ -120,7 +131,7 @@ body {
 }
 
 .win_fone.activated .popper {
-    animation: popper_anim 1s ease-out forwards;
+    animation: popper_anim 0.5s ease-out forwards;
 }
 
 @keyframes popper_anim {
@@ -137,7 +148,7 @@ body {
 .drum {
     display: block;
     animation: drum 15s linear infinite;
-    width: 600px;
+    width: 300px;
     height: auto;
 }
 
@@ -146,14 +157,13 @@ body {
     justify-content: center;
     gap: 20px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 @keyframes drum {
     0% {
         transform: rotateZ(0);
     }
-
     100% {
         transform: rotateZ(360deg);
     }
@@ -166,29 +176,30 @@ body {
     margin: auto;
     top: 50%;
     transform: translateY(-50%);
-    /* font-size: 80px; */
     color: rgb(242, 231, 231);
     background-color: rgb(7, 124, 66);
-    padding: 5px;
+    padding: 20px;
     animation: final_message_anim 0.5s ease-out forwards;
     text-align: center;
-    width: 50%;
+    width: 40%;
     border-radius: 20px;
     box-shadow: 2px 2px 5px grey;
     border: 1px solid rgb(244, 235, 235);
-    min-height: 400px;
+    min-height: 250px;
+    z-index: 10;
 }
 
 .final_message > button {
     width: 200px;
-    height: 75px;
-    font-size: 30px;
-    margin-top: 65px;
+    height: 60px;
+    font-size: 24px;
+    margin-top: 35px;
     border-radius: 10px;
     background-color: salmon;
     color: #f0f0f0;
     box-shadow: 2px 2px 5px grey;
     border: 1px solid rgb(244, 235, 235);
+    cursor: pointer;
 }
 
 @keyframes final_message_anim {
@@ -202,28 +213,31 @@ body {
     }
 }
 
-/* crossword */
+/* ==========================================================================
+   Crossword Section
+   ========================================================================== */
 
 .crossword_questions {
-    width: 22.5vw;
-    margin-left: 20px;
-    margin-top: 25px;
+    position: absolute;
+    left: 40px;
+    top: 80px;
+    width: 25vw;
     height: 80vh;
     border: 1px solid rgb(244, 235, 235);
     border-radius: 20px;
-    gap: 10px;
-    font-size: 40px;
+    font-size: 24px;
     background-color: rgb(27, 127, 215);
     box-shadow: 2px 2px 5px grey;
     padding: 20px;
+    overflow-y: auto;
 }
 
 .crossword_map {
     position: absolute;
+    top: 80px;
+    left: calc(25vw + 80px);
     width: 60vw;
     height: 80vh;
-    top: 80px;
-    left: calc(22.5vw + 225px);
     display: grid;
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(15, 1fr);
@@ -231,15 +245,18 @@ body {
 
 .crossword_letter {
     border: 1px solid rgb(244, 235, 235);
-    grid-auto-rows: 1fr; 
-    aspect-ratio: 1 / 1;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    aspect-ratio: 1 / 1;
 }
 
 .index_word {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 4px;
+    top: 2px;
+    font-size: 14px;
+    color: rgba(242, 231, 231, 0.8);
+    z-index: 2;
 }
 
 .field_letter {
@@ -247,7 +264,8 @@ body {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    font-size: 80px;
+    font-size: 2.5vw;
+    font-weight: bold;
     transform: rotateY(180deg);
     backface-visibility: hidden;
     transition: 0.5s;
