@@ -9,7 +9,6 @@ body {
     background-image: url("src/images/background.webp");
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
     margin: 0;
     padding: 0;
     color: rgb(242, 231, 231);
@@ -22,6 +21,10 @@ body {
     user-select: none;
 }
 
+.win_fone, .crossword_wrapper, .question_wrapper {
+    overflow: hidden;
+}
+
 .hidden_wrapper {
     display: none !important;
 }
@@ -30,14 +33,14 @@ body {
     opacity: 0 !important;
 }
 
-.question_wrapper {
+/* .question_wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     padding-bottom: 260px;
     position: relative;
-}
+} */
 
 .word_section {
     display: flex;
